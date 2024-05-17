@@ -1,3 +1,3 @@
-# kaisthealth
+# kaist-health
 
 Kaist Gym Homepage
