@@ -24,9 +24,7 @@ app.use('/schedules', scheduleRouter);
 app.use('/auth', authRouter);
 app.use('/search', searchRouter);
 
-app.get('/', (req, res) => {
-    res.send('Server is running!');
-});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
