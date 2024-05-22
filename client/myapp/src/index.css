@@ -11,6 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --header-height: 4rem;
+
+  /* Color Palette */
+  --primary-color: #BAF2BB; /* Light Green */
+  --secondary-color: #BAF2D8; /* Mint Green */
+  --accent-color: #BAD7F2; /* Light Blue */
+  --highlight-color: #F2BAC9; /* Pink */
+  --background-color: #F2E2BA; /* Light Beige */
+
+  /* Text Colors */
+  --title-color: hsl(0, 0%, 10%);
+  --text-color: hsl(0, 0%, 30%);
+  --muted-text-color: hsl(0, 0%, 60%);
+  --light-text-color: hsl(0, 0%, 90%);
+
+  /* Fonts */
+  --body-font: "Montserrat", sans-serif;
+  --heading-font: "Dancing Script", cursive;
+
+  /* Font Sizes */
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 2rem;
+  --h3-font-size: 1.75rem;
+  --body-font-size: 1rem;
+  --small-font-size: 0.875rem;
+  --tiny-font-size: 0.75rem;
+
+  /* Font Weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /* Z-index */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Borders */
+  --border-radius: 0.5rem;
+  --border-width: 1px;
+  --border-color: hsl(0, 0%, 80%);
+  
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-medium: 0.4s;
+  --transition-slow: 0.6s;
+}
+
+
+
+
 /*
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&display=swap");
 

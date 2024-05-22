@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,91 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model BodyParts {
+  targetAreaID        Int                   @id @default(autoincrement())
+  targetArea          String?               @unique(map: "targetArea") @db.VarChar(50)
+  largerBodyPart      String?               @db.VarChar(50)
+  EquipmentTargetArea EquipmentTargetArea[]
+}
+
+model Equipment {
+  equipmentID         Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(255)
+  type                String                @db.VarChar(100)
+  EquipmentTargetArea EquipmentTargetArea[]
+  GymEquipment        GymEquipment[]
+  Schedules           Schedules[]
+}
+
+model EquipmentTargetArea {
+  equipmentID  Int
+  targetAreaID Int
+  Equipment    Equipment @relation(fields: [equipmentID], references: [equipmentID], onDelete: NoAction, onUpdate: NoAction, map: "EquipmentTargetArea_ibfk_1")
+  BodyParts    BodyParts @relation(fields: [targetAreaID], references: [targetAreaID], onDelete: NoAction, onUpdate: NoAction, map: "EquipmentTargetArea_ibfk_2")
+
+  @@id([equipmentID, targetAreaID])
+  @@index([targetAreaID], map: "targetAreaID")
+}
+
+model GymEquipment {
+  gymID       Int
+  equipmentID Int
+  Gyms        Gyms      @relation(fields: [gymID], references: [gymID], onDelete: NoAction, onUpdate: NoAction, map: "GymEquipment_ibfk_1")
+  Equipment   Equipment @relation(fields: [equipmentID], references: [equipmentID], onDelete: NoAction, onUpdate: NoAction, map: "GymEquipment_ibfk_2")
+
+  @@id([gymID, equipmentID])
+  @@index([equipmentID], map: "equipmentID")
+}
+
+model Gyms {
+  gymID        Int            @id @default(autoincrement())
+  name         String         @db.VarChar(255)
+  GymEquipment GymEquipment[]
+  Schedules    Schedules[]
+}
+
+model Posts {
+  postID   Int      @id @default(autoincrement())
+  userID   Int
+  title    String   @db.VarChar(255)
+  content  String   @db.Text
+  postDate DateTime @db.DateTime(0)
+  Users    Users    @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "Posts_ibfk_1")
+
+  @@index([userID], map: "userID")
+}
+
+model Schedules {
+  scheduleID  Int           @id @default(autoincrement())
+  userID      Int
+  day         Schedules_day
+  gymID       Int
+  equipmentID Int?
+  Users       Users         @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "Schedules_ibfk_1")
+  Gyms        Gyms          @relation(fields: [gymID], references: [gymID], onDelete: NoAction, onUpdate: NoAction, map: "Schedules_ibfk_2")
+  Equipment   Equipment?    @relation(fields: [equipmentID], references: [equipmentID], onDelete: NoAction, onUpdate: NoAction, map: "Schedules_ibfk_3")
+
+  @@index([equipmentID], map: "equipmentID")
+  @@index([gymID], map: "gymID")
+  @@index([userID], map: "userID")
+}
+
+model Users {
+  userID    Int         @id @default(autoincrement())
+  username  String      @unique(map: "username") @db.VarChar(255)
+  password  String      @db.VarChar(255)
+  Posts     Posts[]
+  Schedules Schedules[]
+}
+
+enum Schedules_day {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
 }
