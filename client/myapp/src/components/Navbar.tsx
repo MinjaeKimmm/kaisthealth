@@ -31,7 +31,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav__item dropdown">
-                            <div className="nav__link">Gyms</div>
+                            <a className="nav__link">Gyms</a>
                             <ul className="submenu">
                                 <li><NavLink to="/gyms/Auditorium.tsx" className="nav__link" onClick={closeMenuOnMobile}>Auditorium</NavLink></li>
                                 <li><NavLink to="/gyms/Heemang.tsx" className="nav__link" onClick={closeMenuOnMobile}>Heemang</NavLink></li>

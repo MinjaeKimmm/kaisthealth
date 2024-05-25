@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Signup from './pages/Signup'
 import Posts from './pages/Posts';
 import Equipments from './pages/Equipments';
 import Dashboard from './pages/Dashboard';
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/equipments" element={<Equipments />} />
         <Route path="/dashboard" element={<Dashboard />} />
