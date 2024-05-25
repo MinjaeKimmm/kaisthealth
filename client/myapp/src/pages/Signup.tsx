@@ -3,12 +3,15 @@ import { isAssertionExpression } from 'typescript';
 import axios from 'axios';
 import { IoAlertCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../AuthContext';
 
 const SignupPage = () => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [usernameAvailable, setUsernameAvailable] = React.useState(true);
     const API = process.env.REACT_APP_API;
+    const { setIsLoggedIn } = useAuth();
+
     const navigate = useNavigate();
 
     const minIDLen = 3;
@@ -50,6 +53,7 @@ const SignupPage = () => {
                 password,
             }, { withCredentials: true });
             window.alert('Signup and login successful');
+            setIsLoggedIn(true);
             navigate("/");
         } catch (e) {
             window.alert(`ERROR: ${e}`);

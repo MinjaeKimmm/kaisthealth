@@ -12,13 +12,16 @@ const isSessionValid = (req, res, next) => {
 };
 
 router.get("/isSessionValid", async (req, res) => {
-    console.log('hi', req.session.user);
     if (req.session.user) {
       res.send(true);
     } else {
       res.send(false);
     }
-  });
+});
+
+router.get("/returnUsername", async (req, res) => {
+    res.send(req.session.user.username);
+});
 
 router.post("/signup", async (req, res) => {
     try {
@@ -51,18 +54,15 @@ router.get("/findUsername", async(req, res)=> {
 router.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
-        console.log('Login attempt:', req.body);  // Log the request payload
         const findUser = await prisma.users.findUnique({
             where: {
                 username: username
             }
         });
-        console.log('User found:', findUser);  // Log if user is found
         if (!findUser) {
             return res.status(404).send("User not found");
         }
         const isValidPassword = await bcrypt.compare(password, findUser.password);
-        console.log('Password valid:', isValidPassword);  // Log if password is valid
         if (!isValidPassword) {
             return res.status(401).send("Incorrect password");
         }
@@ -83,7 +83,7 @@ router.post("/login", async (req, res) => {
             })
         }
     } catch (e) {
-        console.error('Login error:', e);  // Log any errors
+        console.error('Login error:', e);  
         res.status(500).send("Internal server error");
     }
 });

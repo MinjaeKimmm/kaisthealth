@@ -6,7 +6,6 @@ const mysql = require('mysql2');
 
 const equipmentRouter = require('./routes/public/equipments.js');
 const gymRouter = require('./routes/public/gyms.js');
-const postRouter = require('./routes/user/posts.js');
 const profileRouter = require('./routes/user/profiles.js');
 const scheduleRouter = require('./routes/user/schedules.js');
 const authRouter = require('./routes/auth.js');
@@ -70,7 +69,6 @@ app.use(cors(corsOptions));
 
 app.use('/equipments', equipmentRouter);
 app.use('/gyms', gymRouter);
-app.use('/posts', postRouter);
 app.use('/profiles', profileRouter);
 app.use('/schedules', scheduleRouter);
 app.use('/auth', authRouter);
