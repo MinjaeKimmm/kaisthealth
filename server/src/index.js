@@ -6,10 +6,9 @@ const mysql = require('mysql2');
 
 const equipmentRouter = require('./routes/public/equipments.js');
 const gymRouter = require('./routes/public/gyms.js');
-const profileRouter = require('./routes/user/profiles.js');
-const scheduleRouter = require('./routes/user/schedules.js');
 const authRouter = require('./routes/auth.js');
 const searchRouter = require('./routes/search.js');
+const userRouter = require('./routes/user.js')
 
 require('dotenv').config();
 const app = express();
@@ -69,10 +68,9 @@ app.use(cors(corsOptions));
 
 app.use('/equipments', equipmentRouter);
 app.use('/gyms', gymRouter);
-app.use('/profiles', profileRouter);
-app.use('/schedules', scheduleRouter);
 app.use('/auth', authRouter);
 app.use('/search', searchRouter);
+app.use('/user', userRouter)
 
 app.get('/', (req, res) => {
     res.send('Server is running!');

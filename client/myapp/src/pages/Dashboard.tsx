@@ -6,6 +6,12 @@ import "./Dashboard.css";
 
 type Day = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
 
+interface FilterSelection {
+    sortBy: string | null;
+    gym: string | null;
+    equipments: string[];
+}
+
 const DashboardPage = () => {
     const days: Day[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     const [tasks, setTasks] = useState<Record<Day, string>>({
@@ -18,35 +24,41 @@ const DashboardPage = () => {
         Sunday: '',
     });
     const [currentDay, setCurrentDay] = useState<Day>('Monday');
+    const [filterSelection, setFilterSelection] = useState<FilterSelection>({ sortBy: null, gym: null, equipments: [] })
     const [newText, setNewText] = useState('');
 
-    const handleUpdate = () => {
-        setTasks(prevTasks => ({
-            ...prevTasks,
-            [currentDay]: newText
-        }));
-        setNewText('');
+    const handleFilterChange = (selection: FilterSelection) => {
+        setFilterSelection(selection);
     };
+
+    const handleAddClick = () => {
+        if (filterSelection.gym && filterSelection.equipments.length > 0) {
+            const newTask = `${filterSelection.gym}
+                                <ul>
+                                    ${filterSelection.equipments.map(equipment => `<li>${equipment}</li>`).join('')}
+                                </ul>`;
+            setTasks(prevTasks => ({
+                ...prevTasks,
+                [currentDay]: newTask
+            }));
+        };
+    }
 
     return (
         <div>
             <Hello />
             <Timetable tasks={tasks} />
-            <div className="update-section">
-                <select value={currentDay} onChange={(e) => setCurrentDay(e.target.value as Day)}>
-                    {days.map(day => (
-                        <option key={day} value={day}>{day}</option>
-                    ))}
-                </select>
-                <input 
-                    type="text" 
-                    value={newText} 
-                    onChange={(e) => setNewText(e.target.value)} 
-                    placeholder="Enter new text" 
-                />
-                <button onClick={handleUpdate}>Update</button>
-            </div>
-            <Filter />
+            <Filter onFilterChange={handleFilterChange}/>
+            {filterSelection.equipments.length > 0 && (
+                <div className="update-section">
+                    <select value={currentDay} onChange={(e) => setCurrentDay(e.target.value as Day)}>
+                        {days.map(day => (
+                            <option key={day} value={day}>{day}</option>
+                        ))}
+                    </select>
+                    <button onClick={handleAddClick}>Update</button>
+                </div>
+            )}
         </div>
     );
 };
