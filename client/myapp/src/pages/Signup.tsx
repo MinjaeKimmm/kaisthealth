@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { isAssertionExpression } from 'typescript';
 import axios from 'axios';
-import { IoAlertCircle } from "react-icons/io5"
+import { IoAlertCircle } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [usernameAvailable, setUsernameAvailable] = React.useState(true);
     const API = process.env.REACT_APP_API;
+    const navigate = useNavigate();
 
     const minIDLen = 3;
     const maxIDLen = 25;
@@ -24,7 +26,6 @@ const SignupPage = () => {
 
     React.useEffect(()=> {
         const checkUsernameAvailability = async () => {
-            console.log(API);
             const response = await axios.get(API + "/auth/findUsername", {
                 params: { username }
             });
@@ -44,7 +45,12 @@ const SignupPage = () => {
                 username,
                 password,
             });
-            window.alert('Signup successful');
+            await axios.post(API + "/auth/login", {
+                username,
+                password,
+            }, { withCredentials: true });
+            window.alert('Signup and login successful');
+            navigate("/");
         } catch (e) {
             window.alert(`ERROR: ${e}`);
         }

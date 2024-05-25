@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
 import "./Navbar.css";
+import axios from 'axios';
+import { useAuth } from '../AuthContext';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const API = process.env.REACT_APP_API;
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -15,6 +19,18 @@ const Navbar = () => {
             setMenuOpen(false);
         }
     };
+
+    useEffect(() => {
+        axios.get(API + "/auth/isSessionValid")
+          .then(response => setIsLoggedIn(response.data))
+          .catch(err => console.error('Error fetching session status', err));
+    }, [setIsLoggedIn, API]);
+    
+    const handleLogout = () => {
+        axios.post(API + "/auth/logout")
+          .then(() => setIsLoggedIn(false))
+          .catch(err => console.error('Error logging out:', err));
+    }
 
     return (
         <>
@@ -56,9 +72,15 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav__item">
+                        {isLoggedIn ? (
+                            <NavLink to="/" className="nav__login nav__link" onClick={() => { handleLogout(); closeMenuOnMobile(); }}>
+                                Logout
+                            </NavLink>
+                        ) : (
                             <NavLink to="/login" className="nav__login nav__link" onClick={closeMenuOnMobile}>
                                 Login
                             </NavLink>
+                        )}
                         </li>
                     </ul>
                     <div className="nav__close" id="nav-close" onClick={toggleMenu}>

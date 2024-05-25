@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoAlertCircle } from "react-icons/io5";
+import { useAuth } from '../AuthContext';
 
 axios.defaults.withCredentials = true;
 
@@ -10,13 +11,13 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [isLoginError, setIsLoginError] = useState(false);
     const API = process.env.REACT_APP_API;
+    const { setIsLoggedIn } = useAuth();
 
     const navigate = useNavigate();
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            console.log('Attempting login with:', { username, password });
             const response = await axios.post(API + "/auth/login", {
                 username,
                 password,
@@ -24,10 +25,9 @@ const LoginPage = () => {
                 withCredentials: true
             });
 
-            console.log('Login response:', response);
-
             if (response.status === 200) {
                 setIsLoginError(false);
+                setIsLoggedIn(true);
                 navigate("/");
             } else {
                 setIsLoginError(true);
@@ -69,10 +69,10 @@ const LoginPage = () => {
                     <input type="submit" value="Log in" />
                 </div>
                 {isLoginError && (
-                    <>
+                    <div style={{ display: 'flex', alignItems: 'center', color: 'red' }}>
                         <IoAlertCircle className="validIcon" size="15" />
-                        <p>Incorrect username or password.</p>
-                    </>
+                        <p style={{ marginLeft: '5px' }}>Incorrect username or password.</p>
+                    </div>
                 )}
             </form>
         </div>

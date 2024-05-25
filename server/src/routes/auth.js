@@ -11,6 +11,15 @@ const isSessionValid = (req, res, next) => {
     next();
 };
 
+router.get("/isSessionValid", async (req, res) => {
+    console.log('hi', req.session.user);
+    if (req.session.user) {
+      res.send(true);
+    } else {
+      res.send(false);
+    }
+  });
+
 router.post("/signup", async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -77,6 +86,12 @@ router.post("/login", async (req, res) => {
         console.error('Login error:', e);  // Log any errors
         res.status(500).send("Internal server error");
     }
+});
+
+router.post("/logout", async(req, res) => {
+    req.session.user = null;
+
+    res.end();
 })
 
 
