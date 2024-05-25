@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import Timetable from '../components/Dashboard/Timetable';
 import Hello from '../components/Dashboard/Hello'
 import Filter from '../components/Dashboard/Filter';
