@@ -21,6 +21,7 @@ ul {
     height: 3.5rem;
     margin: 1rem;
     box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    z-index: 200; /* High enough to appear above other content */
 }
 
 .nav__logo {
