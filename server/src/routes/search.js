@@ -5,17 +5,15 @@ const prisma = new PrismaClient();
 
 router.get("/", async (req, res) => {
     try {
-      const gymID = parseInt(req.query.gymID, 10);
-      if (isNaN(gymID)) {
-        return res.status(400).json({ error: "Invalid gymID" });
-      }
-      const equipments = await prisma.gymEquipment.findMany({
-        where: {
-          gymID: gymID
+      const newSchedule = await prisma.schedules.create({
+        data: {
+          userID: 4,
+          day: "Monday",
+          gymID: 1,
+          equipmentID: 1
         }
       });
-      let equipmentIDList = equipments.map(equipment => equipment.equipmentID);
-      res.json(equipmentIDList);
+      console.log("Successfully created");
     } catch (error) {
       res.status(500).json({ error: "Something went wrong" });
     }

@@ -4,13 +4,6 @@ const express = require('express');
 const router = express.Router();
 const prisma = new PrismaClient();
 
-const isSessionValid = (req, res, next) => {
-    if (!req.session.user) {
-        return res.status(401).send("Not Authorized");
-    }
-    next();
-};
-
 router.get("/isSessionValid", async (req, res) => {
     if (req.session.user) {
       res.send(true);
