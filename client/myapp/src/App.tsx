@@ -9,7 +9,6 @@ import Signup from './pages/Signup'
 import Equipments from './pages/Equipments';
 import Dashboard from './pages/Dashboard';
 import UserWeek from './pages/UserWeek';
-import UserWeekTemp from './pages/UserWeekTemp'
 import Auditorium from './pages/gyms/Auditorium';
 import Heemang from './pages/gyms/Heemang';
 import Mir from './pages/gyms/Mir';
@@ -27,7 +26,6 @@ const App = () => {
         <Route path="/equipments" element={<Equipments />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/userweek" element={<UserWeek/>} />
-        <Route path="/userweektemp" element={<UserWeekTemp/>} />
         <Route path="/auditorium" element={<Auditorium />} />
         <Route path="/heemang" element={<Heemang />} />
         <Route path="/mir" element={<Mir />} />
