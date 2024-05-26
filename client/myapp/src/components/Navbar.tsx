@@ -15,7 +15,7 @@ const Navbar = () => {
     };
 
     const closeMenuOnMobile = () => {
-        if (window.innerWidth <= 1150) {
+        if (window.innerWidth <= 1000) {
             setMenuOpen(false);
         }
     };
@@ -61,27 +61,26 @@ const Navbar = () => {
                                 Equipments
                             </NavLink>
                         </li>
-                        <li className="nav__item">
-                            <NavLink to="/posts" className="nav__link" onClick={closeMenuOnMobile}>
-                                Posts
-                            </NavLink>
-                        </li>
-                        <li className="nav__item">
-                            <NavLink to="/dashboard" className="nav__link" onClick={closeMenuOnMobile}>
-                                Dashboard
-                            </NavLink>
-                        </li>
-                        <li className="nav__item">
                         {isLoggedIn ? (
-                            <NavLink to="/" className="nav__login nav__link" onClick={() => { handleLogout(); closeMenuOnMobile(); }}>
-                                Logout
-                            </NavLink>
+                            <>
+                                <li className="nav__item">
+                                    <NavLink to="/dashboard" className="nav__link" onClick={closeMenuOnMobile}>
+                                        Dashboard
+                                    </NavLink>
+                                </li>
+                                <li className="nav__item">
+                                    <NavLink to="/" className="nav__login nav__link" onClick={() => { handleLogout(); closeMenuOnMobile(); }}>
+                                        Logout
+                                    </NavLink>
+                                </li>
+                            </>
                         ) : (
-                            <NavLink to="/login" className="nav__login nav__link" onClick={closeMenuOnMobile}>
-                                Login
-                            </NavLink>
+                            <li>
+                                <NavLink to="/login" className="nav__login nav__link" onClick={closeMenuOnMobile}>
+                                    Login
+                                </NavLink>
+                            </li>
                         )}
-                        </li>
                     </ul>
                     <div className="nav__close" id="nav-close" onClick={toggleMenu}>
                         <IoClose />

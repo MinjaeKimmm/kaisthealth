@@ -82,8 +82,11 @@ ul {
 
     .nav__list {
         display: flex;
-        flex-direction: row;
-        column-gap: 2.5rem;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
     }
 
     .menu {
@@ -91,13 +94,14 @@ ul {
         justify-content: center;
         align-items: stretch;
         height: 70px;
+        flex-grow: 1;
     }
 
     .menu li {
         display: inline-block;
-        width: 80px;
         color: #999;
         transition: all 0.3s ease-in-out;
+        padding: 0 1rem;
     }
 
     .menu li:hover > .submenu {
@@ -170,6 +174,12 @@ ul {
         transition: all 0.2s ease-in-out;
         scale: 0 0;
         visibility: hidden;
+    }
+
+    .nav__login {
+        padding: 0.75rem 1.5rem;
+        min-width: 80px; 
+        text-align: center;
     }
 }
 
