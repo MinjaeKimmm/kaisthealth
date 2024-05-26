@@ -24,11 +24,10 @@ ul {
     z-index: 200; /* High enough to appear above other content */
 }
 
-.nav__logo {
-    color: #FFAA33;
-    transition: color 0.4s;
-    font-size: 1.25rem;
-    font-family: "Dancing Script", cursive;
+.nav__logo-img {
+    height: 40px; 
+    width: auto;
+    display: block;
 }
 
 .nav__toggle,

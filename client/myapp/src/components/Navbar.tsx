@@ -5,6 +5,8 @@ import "./Navbar.css";
 import axios from 'axios';
 import { useAuth } from '../AuthContext';
 
+const icon = process.env.PUBLIC_URL + "/img/icon.png";
+
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -36,7 +38,7 @@ const Navbar = () => {
         <>
             <nav className="nav container">
                 <NavLink to="/" className="nav__logo">
-                    Logo
+                    <img src={icon} alt="Logo" className="nav__logo-img"/>
                 </NavLink>
                 
                 <div className={`nav__menu ${menuOpen ? 'show-menu' : ''}`} id="nav-menu">

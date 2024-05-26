@@ -14,6 +14,7 @@ import Heemang from './pages/gyms/Heemang';
 import Mir from './pages/gyms/Mir';
 import Silloe from './pages/gyms/Silloe';
 import Yeoul from './pages/gyms/Yeoul';
+import TempPage from './Temp';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/mir" element={<Mir />} />
         <Route path="/silloe" element={<Silloe />} />
         <Route path="/yeoul" element={<Yeoul />} />
+        <Route path="/temp" element={<TempPage />}></Route>
       </Routes>
     </Router>
   )
