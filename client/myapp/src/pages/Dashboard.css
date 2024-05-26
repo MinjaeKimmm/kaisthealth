@@ -25,3 +25,24 @@
 .update-section button:hover {
     background-color: #FF5500;
 }
+
+.navigate-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.navigate-button {
+    background-color: #FF8800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin:0 0 20px 0;
+}
+
+.navigate-button:hover {
+    background-color: #FF5500;
+}

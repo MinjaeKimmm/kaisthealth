@@ -3,7 +3,7 @@ import Timetable from '../components/Dashboard/Timetable';
 import Hello from '../components/Dashboard/Hello'
 import Filter from '../components/Dashboard/Filter';
 import "./Dashboard.css";
-import { Router } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -25,6 +25,7 @@ interface GymEquipment {
 
 const DashboardPage = () => {
     const API = process.env.REACT_APP_API;
+    const navigate = useNavigate();
     const days: Day[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     const [tasks, setTasks] = useState<Record<Day, string>>({
         Monday: '',
@@ -159,6 +160,9 @@ const DashboardPage = () => {
         <div>
             <Hello />
             <Timetable tasks={tasks} />
+            <div className="navigate-button-container">
+                <button className="navigate-button" onClick={() => navigate('/userweek')}>Go to User Week!</button>
+            </div>            
             <Filter onFilterChange={handleFilterChange}/>
             {filterSelection.equipments.length > 0 && (
                 <div className="update-section">
