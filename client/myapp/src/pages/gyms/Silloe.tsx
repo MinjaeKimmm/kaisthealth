@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Banner, getGymInfo } from '../../components/GymComponents'; 
+import Carousel from '../../components/GalleryView/Carousel';
+import '../../components/GymComponents.css'
 
-const SilloePage = () => {
+const SilloePage: React.FC = () => {
+    const [equipmentList, setEquipmentList] = useState<string[]>([]);
+    const gymID = 3; 
+
+    useEffect(() => {
+        const fetchGymInfo = async () => {
+            try {
+                const equipmentList = await getGymInfo(gymID);
+                setEquipmentList(equipmentList);
+            } catch (error) {
+                console.error("Error fetching gym info:", error);
+            }
+        };
+
+        fetchGymInfo();
+    }, [gymID]);
+
+    const imageUrls = equipmentList.map(equipmentName => `/img/Gyms/Silloe/${equipmentName}.jpg` );
+
     return (
         <div>
-            <h1>Silloe</h1>
-            <p>This is the Silloe page.</p>
+            <Banner gymName="Silloe" />
+            <h1>Silloe Page</h1>
+            <p>Number of Equipments: { equipmentList.length }</p>
+            <Carousel slides={imageUrls} />
         </div>
     );
 };

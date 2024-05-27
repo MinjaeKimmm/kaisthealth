@@ -74,6 +74,9 @@ const LoginPage = () => {
                         <p style={{ marginLeft: '5px' }}>Incorrect username or password.</p>
                     </div>
                 )}
+                <div>
+                    <button onClick={() => navigate('/Signup')}>Sign up~~</button>
+                </div>
             </form>
         </div>
     );
