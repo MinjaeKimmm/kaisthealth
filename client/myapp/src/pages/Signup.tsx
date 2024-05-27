@@ -86,40 +86,45 @@ const SignupPage = () => {
     };
 
     return (
-        <div>
-            <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label>Username</label>
+        <section className="page auth">
+            <div className="auth-background"></div>
+                <div className="auth-card">
+                    <h2>Signup Here!</h2>
+                    <form onSubmit={handleSignup}>
                     <input
                         type="text"
                         name="username"
-                        placeholder="username"
+                        placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        className="auth-input"
                     />
-                    <span style = {{ color: 'red' }}><div>{validateUsername()}</div></span>
-                </div>
-                <div>
-                    <label>Password</label>
+                    <span style={{ color: 'red' }}>
+                        <div>{validateUsername()}</div>
+                    </span>
                     <input
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className="auth-input"
                     />
-                    <span style = {{ color: 'red'}}><div>{validatePassword()}</div></span>
-                </div>
-                <div>
-                    <input 
+                    <span style={{ color: 'red' }}>
+                        <div>{validatePassword()}</div>
+                    </span>
+                    <input
+                        type="submit"
+                        value="Signup"
+                        className="auth-button"
                         disabled={!isFormValid()}
-                        type="submit" 
-                        value="Signup" 
                     />
-                </div>
-            </form>
-        </div>
+                </form>
+                <footer>
+                    Already have an account? Log in <a href="/Login">here</a>
+                </footer>
+            </div>
+        </section>
     );
 };
 

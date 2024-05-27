@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoAlertCircle } from "react-icons/io5";
 import { useAuth } from '../AuthContext';
+import '../temp/Auth.css';
 
 axios.defaults.withCredentials = true;
 
@@ -42,43 +43,40 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <section className="page auth">
+          <div className="auth-background"></div>
+          <div className="auth-card">
+            <h2>Welcome Back!</h2>
             <form onSubmit={handleLogin}>
-                <div>
-                    <label>Username</label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="auth-input"
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="auth-input"
+                />
+                <input type="submit" value="Log in" className="auth-button" />
+              {isLoginError && (
+                <div style={{ display: 'flex', alignItems: 'center', color: 'red' }}>
+                  <IoAlertCircle className="validIcon" size="15" />
+                  <p style={{ marginLeft: '5px' }}>Incorrect username or password.</p>
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <input type="submit" value="Log in" />
-                </div>
-                {isLoginError && (
-                    <div style={{ display: 'flex', alignItems: 'center', color: 'red' }}>
-                        <IoAlertCircle className="validIcon" size="15" />
-                        <p style={{ marginLeft: '5px' }}>Incorrect username or password.</p>
-                    </div>
-                )}
-                <div>
-                    <button onClick={() => navigate('/Signup')}>Sign up~~</button>
-                </div>
+              )}
             </form>
-        </div>
+            <footer>
+              Need an account? Sign up <a href="/Signup">here</a>
+            </footer>
+          </div>
+        </section>
     );
 };
 
