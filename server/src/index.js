@@ -4,11 +4,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql2');
 
-const equipmentRouter = require('./routes/public/equipments.js');
-const gymRouter = require('./routes/public/gyms.js');
 const authRouter = require('./routes/auth.js');
 const searchRouter = require('./routes/search.js');
 const userRouter = require('./routes/user.js')
+const publicRouter = require('./routes/public.js')
 
 require('dotenv').config();
 const app = express();
@@ -66,8 +65,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use('/equipments', equipmentRouter);
-app.use('/gyms', gymRouter);
+app.use('/public', publicRouter);
 app.use('/auth', authRouter);
 app.use('/search', searchRouter);
 app.use('/user', userRouter)

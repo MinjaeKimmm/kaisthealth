@@ -5,9 +5,9 @@ import "./Navbar.css";
 import axios from 'axios';
 import { useAuth } from '../AuthContext';
 
-const icon = process.env.PUBLIC_URL + "/img/icon.png";
-
 const Navbar = () => {
+    const icon = "/img/icon.jpg";
+
     const [menuOpen, setMenuOpen] = useState(false);
     const { isLoggedIn, setIsLoggedIn } = useAuth();
     const API = process.env.REACT_APP_API;
@@ -51,11 +51,11 @@ const Navbar = () => {
                         <li className="nav__item dropdown">
                             <a className="nav__link">Gyms</a>
                             <ul className="submenu">
-                                <li><NavLink to="/gyms/Auditorium.tsx" className="nav__link" onClick={closeMenuOnMobile}>Auditorium</NavLink></li>
-                                <li><NavLink to="/gyms/Heemang.tsx" className="nav__link" onClick={closeMenuOnMobile}>Heemang</NavLink></li>
-                                <li><NavLink to="/gyms/Mir.tsx" className="nav__link" onClick={closeMenuOnMobile}>Mir</NavLink></li>
-                                <li><NavLink to="/gyms/Silloe.tsx" className="nav__link" onClick={closeMenuOnMobile}>Silloe</NavLink></li>
-                                <li><NavLink to="/gyms/Yeoul.tsx" className="nav__link" onClick={closeMenuOnMobile}>Yeoul</NavLink></li>
+                                <li><NavLink to="/Auditorium" className="nav__link" onClick={closeMenuOnMobile}>Auditorium</NavLink></li>
+                                <li><NavLink to="/Heemang" className="nav__link" onClick={closeMenuOnMobile}>Heemang</NavLink></li>
+                                <li><NavLink to="/Mir" className="nav__link" onClick={closeMenuOnMobile}>Mir</NavLink></li>
+                                <li><NavLink to="/Silloe" className="nav__link" onClick={closeMenuOnMobile}>Silloe</NavLink></li>
+                                <li><NavLink to="/Yeoul" className="nav__link" onClick={closeMenuOnMobile}>Yeoul</NavLink></li>
                             </ul>
                         </li>
                         <li className="nav__item">
