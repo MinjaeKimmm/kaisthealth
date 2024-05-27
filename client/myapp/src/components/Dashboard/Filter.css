@@ -1,0 +1,39 @@
+.filter-container {
+    display: flex;
+    background-color: #f4f4f4;
+    margin: 20px;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.segment {
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sort-by, .gyms, .equipments {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.equipments {
+    max-height: 120px;
+    overflow-y: scroll;
+}
+
+.add-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+input[type="checkbox"] {
+    accent-color: orange;
+}

@@ -1,0 +1,63 @@
+.timetable {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: calc(100% - 40px);
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.header-row {
+  display: contents;
+}
+
+.body-row {
+  display: contents;
+}
+
+.header-cell, .body-cell {
+  padding: 10px;
+  vertical-align: top;
+  border: 1px solid #ddd;
+}
+
+.header-cell {
+  background-color: #F8BD64;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.body-cell {
+  background-color: #FFE1B4;
+  color: black;
+  overflow: auto; 
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gym-name {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 10px; 
+  text-align: center;
+  width: 100%;
+}
+
+.body-cell ul {
+  margin: 5px 0 0 0; 
+  padding-left: 20px;
+  list-style-type: disc;
+  list-style-position: inside; 
+  text-align: left;
+  width: 100%; 
+}
+
+.body-cell li {
+  font-weight: normal;
+  font-size: 16px;
+}
