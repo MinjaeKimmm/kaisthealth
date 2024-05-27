@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoAlertCircle } from "react-icons/io5";
 import { useAuth } from '../AuthContext';
-import '../temp/Auth.css';
+import '../components/Auth.css';
 
 axios.defaults.withCredentials = true;
 

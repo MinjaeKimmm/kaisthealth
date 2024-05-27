@@ -4,6 +4,7 @@ import axios from 'axios';
 import { IoAlertCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../AuthContext';
+import '../components/Auth.css';
 
 const SignupPage = () => {
     const [username, setUsername] = React.useState("");

@@ -1,9 +1,16 @@
 .equipmentPage {
+    background: #eff9ff;
+
     h1 {
-        font-size: 2em;
-        color: #ff7f00;
-        margin-bottom: 10px;
-        margin: 20px;
+        font-family: 'Euclid Circular A', sans-serif;
+        font-size: 2.5em;
+        font-weight: bold; 
+        letter-spacing: 2px;
+        color: #333;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-align: center; 
+        padding: 20px;
     }
     
     p {
@@ -16,7 +23,7 @@
         font-size: 1.5em;
         color: #333;
         margin: 20px 20px 0px 20px;
-        background-color: hsl(30, 91%, 82%);
+        background-color: hsl(30, 88%, 80%);
         border-radius: 8px 8px 0 0;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 10px

@@ -23,7 +23,7 @@ const AuditoriumPage: React.FC = () => {
     const imageUrls = equipmentList.map(equipmentName => `/img/Gyms/Auditorium/${equipmentName}.jpg`);
 
     return (
-        <div>
+        <div className="gymContainer">
             <Banner gymName="Auditorium" />
             <h1>Auditorium Page</h1>
             <p>Number of Equipments: { equipmentList.length }</p>

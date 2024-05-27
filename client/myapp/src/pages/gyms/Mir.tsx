@@ -23,7 +23,7 @@ const MirPage: React.FC = () => {
     const imageUrls = equipmentList.map(equipmentName => `/img/Gyms/Mir/${equipmentName}.jpg` );
 
     return (
-        <div>
+        <div className="gymContainer">
             <Banner gymName="Mir" />
             <h1>Mir Page</h1>
             <p>Number of Equipments: { equipmentList.length }</p>

@@ -157,7 +157,7 @@ const DashboardPage = () => {
     };
 
     return (
-        <div>
+        <div className="dashboardContainer">
             <Hello />
             <Timetable tasks={tasks} />
             <div className="navigate-button-container">

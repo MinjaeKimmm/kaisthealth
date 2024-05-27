@@ -1,0 +1,37 @@
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 89vh;
+    background-color: #f0f8ff;
+    text-align: center;
+}
+
+.titlebanner {
+    background-color: #FFAA33; 
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%
+}
+
+.title {
+    font-family: 'Euclid Circular A', sans-serif;
+    font-size: 2.5em;
+    font-weight: bold; 
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.map-image {
+    width: 80%;
+    max-width: 1050px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}

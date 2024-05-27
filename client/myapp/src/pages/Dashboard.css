@@ -1,3 +1,8 @@
+.dashboardContainer {
+    background: #eff9ff;
+    border-radius: 5px;
+}
+
 .update-section {
     display: flex;
     align-items: center;
